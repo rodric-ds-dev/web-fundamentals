@@ -1,0 +1,89 @@
+body {
+  background-color: #f0f2f5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+  min-height: 100vh;
+  height: 100vh;
+  margin: 10;
+  font-family: "Roboto", sans-serif;
+  gap: 20px;
+}
+
+.description {
+  margin-bottom: 30px; /* Esto crea el "aire" que necesitas abajo */
+  color: #444; /* Un gris oscuro para mejor legibilidad */
+}
+
+.footer {
+  color: #666;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 350px;
+  width: 90%;
+}
+
+/* Foto circular con borde */
+.profile-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%; /* Esto hace el recorte circular */
+  border: 5px solid #000000; /* Borde de color */
+  object-fit: cover; /* Evita que la foto se deforme */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
+}
+
+/* Estilo del texto dinámico */
+.typewriter-container {
+  font-weight: bold;
+  color: #093b71;
+  height: 24px;
+  margin: 10px 0;
+}
+
+.cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  border-left: 2px solid #093b71;
+  margin-left: 2px;
+  vertical-align: middle;
+  position: relative;
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  } /* Visible */
+  50% {
+    opacity: 0;
+  } /* Invisible */
+}
+
+.links a {
+  text-decoration: none; /* Quita el subrayado feo */
+  color: #555;
+  padding: 8px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: all 0.3s ease; /* Hace que el cambio de color sea suave, no brusco */
+}
+
+.links a:hover {
+  background-color: #093b71; /* Cambia a azul al pasar el mouse */
+  color: white;
+  border-color: #093b71;
+  transform: translateY(-3px); /* Pequeño salto hacia arriba */
+}

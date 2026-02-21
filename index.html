@@ -3,109 +3,48 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About Rodrigo Crespo</title>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <style>
-      .bar {
-        fill: #4e79a7;
-      }
-      .bar:hover {
-        fill: #2c3e50;
-      }
-      text {
-        font-family: sans-serif;
-        font-size: 12px;
-      }
-    </style>
+
+    <title>Rodrigo Crespo, Data Scientist</title>
+    <link rel="icon" href="assets/images/favicon-32x32.png" type="image/png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>About me...</h1>
-    <p>Hola, soy Rodrigo Crespo, científico de datos radicado en 🇪🇨</p>
-    <br />
-    <p>
-      Me apasiona el análisis de datos, la visualización y la inteligencia
-      artificial. En mi tiempo libre, disfruto de hobbies como:
-    </p>
-    <ul>
-      <li>Viajar ✈️</li>
-      <li>Fotografía 📸</li>
-      <li>Cocinar 🍳</li>
-      <li>Deportes ⚽️</li>
-    </ul>
-    <p>Mis películas favoritas son:</p>
-    <ol>
-      <li>Titanic</li>
-      <li>Harry Potter</li>
-      <li>Interstellar</li>
-      <li>Inception</li>
-    </ol>
-    <p>Mi web favorita es <a href="https://www.kaggle.com/">Kaggle</a></p>
-    <p>Gracias por visitar mi pagina, a continuación la foto de un perrito:</p>
-    <img
-      src="https://images.unsplash.com/photo-1517423440428-a5a00ad493e8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGVycml0b3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
-      alt="Perrito"
-    />
-    <div id="chart"></div>
+    <div class="card">
+      <img
+        src="assets/images/perfil-hero.jpg"
+        alt="Foto de perfil de Rodrigo Crespo"
+        class="profile-img"
+      />
+      <h1>Rodrigo Crespo</h1>
+      <div class="typewriter-container">
+        <span class="typewriter-text"></span>
+        <span class="cursor"></span>
+      </div>
 
-    <script>
-      const data = [
-        { name: "A", value: 1 },
-        { name: "B", value: 5 },
-        { name: "C", value: 8 },
-        { name: "D", value: 10 },
-      ];
+      <p class="description">
+        Data Scientist focused on enhancing process efficiency through
+        analytical modeling and automation, with teaching experience in
+        analytics and a constant focus on technological innovation.
+      </p>
 
-      // 1. Configuración de dimensiones
-      const width = 400;
-      const height = 200;
-      const margin = { top: 20, right: 20, bottom: 30, left: 40 };
-
-      // 2. Crear el contenedor SVG
-      const svg = d3
-        .select("#chart")
-        .append("svg")
-        .attr("width", width)
-        .attr("height", height);
-
-      // 3. Escalas (Scales)
-      const x = d3
-        .scaleBand()
-        .domain(data.map((d) => d.name))
-        .range([margin.left, width - margin.right])
-        .padding(0.1);
-
-      const y = d3
-        .scaleLinear()
-        .domain([0, d3.max(data, (d) => d.value)])
-        .nice()
-        .range([height - margin.bottom, margin.top]);
-
-      // 4. Dibujar las barras
-      svg
-        .append("g")
-        .selectAll("rect")
-        .data(data)
-        .join("rect")
-        .attr("class", "bar")
-        .attr("x", (d) => x(d.name))
-        .attr("y", (d) => y(d.value))
-        .attr("height", (d) => y(0) - y(d.value))
-        .attr("width", x.bandwidth());
-
-      // 5. Añadir Ejes
-      svg
-        .append("g")
-        .attr("transform", `translate(0,${height - margin.bottom})`)
-        .call(d3.axisBottom(x));
-
-      svg
-        .append("g")
-        .attr("transform", `translate(${margin.left},0)`)
-        .call(d3.axisLeft(y));
-    </script>
-
+      <div class="links">
+        <a href="https://www.linkedin.com/in/rodri-crespo/" target="_blank"
+          >LinkedIn</a
+        >
+        <a href="https://github.com/rodric-ds-dev" target="_blank">GitHub</a>
+        <a href="mailto:rod.crespo.a@gmail.com">Correo</a>
+      </div>
+    </div>
+    <script src="script.js"></script>
     <footer>
-      <p>© 2024 Rodrigo Crespo</p>
+      <p>© 2026 Rodrigo Crespo</p>
     </footer>
   </body>
 </html>
