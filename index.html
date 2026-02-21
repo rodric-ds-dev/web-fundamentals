@@ -4,6 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About Rodrigo Crespo</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+      .bar {
+        fill: #4e79a7;
+      }
+      .bar:hover {
+        fill: #2c3e50;
+      }
+      text {
+        font-family: sans-serif;
+        font-size: 12px;
+      }
+    </style>
   </head>
   <body>
     <h1>About me...</h1>
@@ -32,6 +45,65 @@
       src="https://images.unsplash.com/photo-1517423440428-a5a00ad493e8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGVycml0b3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
       alt="Perrito"
     />
+    <div id="chart"></div>
+
+    <script>
+      const data = [
+        { name: "A", value: 1 },
+        { name: "B", value: 5 },
+        { name: "C", value: 8 },
+        { name: "D", value: 10 },
+      ];
+
+      // 1. Configuración de dimensiones
+      const width = 400;
+      const height = 200;
+      const margin = { top: 20, right: 20, bottom: 30, left: 40 };
+
+      // 2. Crear el contenedor SVG
+      const svg = d3
+        .select("#chart")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+      // 3. Escalas (Scales)
+      const x = d3
+        .scaleBand()
+        .domain(data.map((d) => d.name))
+        .range([margin.left, width - margin.right])
+        .padding(0.1);
+
+      const y = d3
+        .scaleLinear()
+        .domain([0, d3.max(data, (d) => d.value)])
+        .nice()
+        .range([height - margin.bottom, margin.top]);
+
+      // 4. Dibujar las barras
+      svg
+        .append("g")
+        .selectAll("rect")
+        .data(data)
+        .join("rect")
+        .attr("class", "bar")
+        .attr("x", (d) => x(d.name))
+        .attr("y", (d) => y(d.value))
+        .attr("height", (d) => y(0) - y(d.value))
+        .attr("width", x.bandwidth());
+
+      // 5. Añadir Ejes
+      svg
+        .append("g")
+        .attr("transform", `translate(0,${height - margin.bottom})`)
+        .call(d3.axisBottom(x));
+
+      svg
+        .append("g")
+        .attr("transform", `translate(${margin.left},0)`)
+        .call(d3.axisLeft(y));
+    </script>
+
     <footer>
       <p>© 2024 Rodrigo Crespo</p>
     </footer>
